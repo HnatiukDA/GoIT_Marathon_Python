@@ -6,6 +6,7 @@ pygame.init()
 
 FPS = pygame.time.Clock()
 
+# Dysplay size
 HEIGHT = 800
 WIDTH = 1200
 
@@ -15,14 +16,9 @@ COLOR_BLACK = ('#000000')
 COLOR_RED = ('#ff0000')
 COLOR_GREEN = ('#00ff00')
 BLINK = ('#101010')
-PLAYER_COLOR_PALETTE = [(255, 0, 0), (255, 165, 0), (255, 255, 0),
-                        (0, 128, 0), (0, 0, 255), (75, 0, 130), (238, 130, 238)]
+
 
 main_dysplay = pygame.display.set_mode((WIDTH, HEIGHT))
-
-# Get random coordinates
-random_x = random.randint(1, WIDTH - 1)
-random_y = random.randint(1, HEIGHT - 1)
 
 
 # Set up player
@@ -34,6 +30,7 @@ player_rect = pygame.Rect(*player_position, *player_size)
 player_speed = (0, 0)
 
 
+# Events
 CREATE_ENEMY = pygame.USEREVENT + 1
 pygame.time.set_timer(CREATE_ENEMY, 1500)
 
@@ -43,12 +40,6 @@ CREATE_BONUS = pygame.USEREVENT + 2
 pygame.time.set_timer(CREATE_BONUS, 3000)
 
 bonuses = []
-
-# Set initial random speed
-random_speed_x = random.choice([-1, 1])
-random_speed_y = random.choice([-1, 1])
-
-random_palette_color = 0
 
 # Control
 player_move_down = (0, 3)
