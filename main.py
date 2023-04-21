@@ -34,9 +34,6 @@ player_rect = pygame.Rect(*player_position, *player_size)
 player_speed = (0, 0)
 
 
-
-
-
 CREATE_ENEMY = pygame.USEREVENT + 1
 pygame.time.set_timer(CREATE_ENEMY, 1500)
 
@@ -80,10 +77,6 @@ def create_bonus():
     bonus_speed = [0, random.randint(1, 2)]
     return [bonus, bonus_rect, bonus_speed]
 
-def set_random_color():
-    random_palette_color = (random.randint(0, len(PLAYER_COLOR_PALETTE) - 1))
-    player.fill(PLAYER_COLOR_PALETTE[random_palette_color])
-
 
 while True:
     FPS.tick(90)
@@ -117,29 +110,23 @@ while True:
     if keys[K_LEFT] and player_rect.left > 0:
         player_rect = player_rect.move(player_move_left)
 
-
     main_dysplay.blit(player, player_rect)
     player_rect = player_rect.move(player_speed)
-
 
     for enemy in enemies:
         enemy[1] = enemy[1].move(enemy[2])
         main_dysplay.blit(enemy[0], enemy[1])
-    
-    
+
     for bonus in bonuses:
         bonus[1] = bonus[1].move(bonus[2])
         main_dysplay.blit(bonus[0], bonus[1])
-
 
     pygame.display.flip()
 
     for enemy in enemies:
         if enemy[1].right < 0:
             enemies.pop(enemies.index(enemy))
-            
+
     for bonus in bonuses:
         if bonus[1].top > HEIGHT:
             bonuses.pop(bonuses.index(bonus))
-
-    print(len(bonuses))
