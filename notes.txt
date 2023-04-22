@@ -1,0 +1,6 @@
+create clouds on top of the screen
+
+set player start position center left
+
+after player collide and lose all health make him invincible
+
