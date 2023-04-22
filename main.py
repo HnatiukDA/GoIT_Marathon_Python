@@ -42,11 +42,8 @@ bg_move = 2
 # Set up player
 player_size = [182, 76]
 player_position = (WIDTH/9 - player_size[0]/2, HEIGHT/2 - player_size[1]/2)
-# player = pygame.Surface(player_size)
-# player.fill(COLOR_BLACK)
 player = pygame.image.load(PLAYER_IMAGE)
 player_rect = pygame.Rect(*player_position, *player_size)
-# player_rect = pygame.Rect(WIDTH/2 - player_size(1)/2, HEIGHT/2 - player_size(2)/2 )
 player_speed = (0, 0)
 
 
