@@ -12,7 +12,7 @@ HEIGHT = 800
 WIDTH = 1200
 
 # Text
-FONT = pygame.font.SysFont("Comic Sans", 30)
+FONT = pygame.font.SysFont("Comic Sans", 40, True)
 
 # Colors
 COLOR_WHITE = ('#ffffff')
@@ -185,8 +185,8 @@ while True:
             if score < 0:
                 score = 0
 
-    main_dysplay.blit(FONT.render(str(score), True,
-                      COLOR_GOLD), (WIDTH - 50, 40))
+    main_dysplay.blit(FONT.render("SCORE:  " + str(score), True,
+                      COLOR_GOLD), (40, 40))
 
     pygame.display.flip()
 
