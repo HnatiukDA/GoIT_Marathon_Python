@@ -37,7 +37,7 @@ bg = pygame.transform.scale(pygame.image.load(
     "res/background.png"), (WIDTH, HEIGHT))
 bg_X1 = 0
 bg_X2 = bg.get_width()
-bg_move = 3
+bg_move = 2
 
 # Set up player
 player_size = [182, 76]
@@ -55,12 +55,12 @@ CHANGE_PLAYER_IMAGE = pygame.USEREVENT + 1
 pygame.time.set_timer(CHANGE_PLAYER_IMAGE, 200)
 
 CREATE_ENEMY = pygame.USEREVENT + 2
-pygame.time.set_timer(CREATE_ENEMY, 1500)
+pygame.time.set_timer(CREATE_ENEMY, 2000)
 
 enemies = []
 
 CREATE_BONUS = pygame.USEREVENT + 3
-pygame.time.set_timer(CREATE_BONUS, 3500)
+pygame.time.set_timer(CREATE_BONUS, 5200)
 
 bonuses = []
 
@@ -95,10 +95,10 @@ def create_cloud():
 def create_enemy():
     enemy_size = [205, 72]
     enemy_position = (WIDTH + enemy_size[0],
-                      random.randint(int(HEIGHT/8), HEIGHT - int(HEIGHT/5) - enemy_size[1]))
+                      random.randint(int(HEIGHT/8), HEIGHT - int(HEIGHT/4) - enemy_size[1]))
     enemy = pygame.image.load(ENEMY_IMAGE)
     enemy_rect = pygame.Rect(*enemy_position, *enemy_size)
-    enemy_speed = [random.choice([-6, -5, -4, -2, -1]), 0]
+    enemy_speed = [random.randint(-7, -3), 0]
     return [enemy, enemy_rect, enemy_speed]
 
 
@@ -170,7 +170,7 @@ while True:
         main_dysplay.blit(bonus[0], bonus[1])
         if player_rect.colliderect(bonus[1]):
             bonuses.pop(bonuses.index(bonus))
-            score += 1
+            score += 4
 
     for cloud in clouds:
         cloud[1] = cloud[1].move(cloud[2])
