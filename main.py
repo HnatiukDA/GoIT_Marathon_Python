@@ -166,8 +166,10 @@ while True:
 
     for bonus in bonuses:
         bonus[1] = bonus[1].move(bonus[2])
-        main_dysplay.blit(bonus[0], (bonus[1][0] - bonus[0].get_width()/2 + (
-            bonus[1][2]/2), bonus[1][1] - (bonus[0].get_height() - bonus[1][3])))
+        IMAGE_POSITION_X = bonus[1][0] - bonus[0].get_width()/2 + (
+            bonus[1][2]/2)
+        IMAGE_POSITION_Y = bonus[1][1] - (bonus[0].get_height() - bonus[1][3])
+        main_dysplay.blit(bonus[0], (IMAGE_POSITION_X, IMAGE_POSITION_Y))
         if player_rect.colliderect(bonus[1]):
             bonuses.pop(bonuses.index(bonus))
             score += 4
