@@ -104,9 +104,9 @@ def create_enemy():
 
 # Set up bonus
 def create_bonus():
-    bonus_size = [179, 298]
-    bonus_position = (random.randint(
-        int(WIDTH/8) + player_size[0], WIDTH - bonus_size[0]), -bonus_size[1])
+    bonus_size = [10, 10]
+    bonus_position = [random.randint(
+        int(WIDTH/8) + player_size[0], WIDTH - bonus_size[0]), -bonus_size[1]]
     bonus = pygame.image.load(BONUS_IMAGE)
     bonus_rect = pygame.Rect(*bonus_position, *bonus_size)
     bonus_speed = [random.randint(-1, 0), random.randint(1, 2)]
@@ -135,7 +135,6 @@ while True:
             image_index += 1
             if image_index >= (len(PLAYER_IMAGES) - 1):
                 image_index = 0
-    print(len(PLAYER_IMAGES))
     bg_X1 -= bg_move
     bg_X2 -= bg_move
 
@@ -167,7 +166,8 @@ while True:
 
     for bonus in bonuses:
         bonus[1] = bonus[1].move(bonus[2])
-        main_dysplay.blit(bonus[0], bonus[1])
+        main_dysplay.blit(bonus[0], (bonus[1][0] - bonus[0].get_width()/2 + (
+            bonus[1][2]/2), bonus[1][1] - (bonus[0].get_height() - bonus[1][3])))
         if player_rect.colliderect(bonus[1]):
             bonuses.pop(bonuses.index(bonus))
             score += 4
