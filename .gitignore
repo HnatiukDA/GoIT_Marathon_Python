@@ -1,1 +1,3 @@
-*.txt
+notes.txt
+GooseGame/
+__pycache__/
